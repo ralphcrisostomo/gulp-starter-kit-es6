@@ -46,9 +46,15 @@ gulp.task('release', function (done) {
             'git:add:commit',
             'release:finish',
             'git:push',
+            'npm:publish',
             done);
 
     });
+});
+
+gulp.task('npm:publish', function () {
+    return gulp.src('./')
+        .pipe(shell([`npm publish`]));
 });
 
 gulp.task('release:start', function () {
